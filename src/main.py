@@ -7,7 +7,11 @@ from src.bot import dp, bot, set_default_commands
 async def main():
     await create_all()
     await set_default_commands()
+    print('Bot enabled')
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print('Bot disabled')

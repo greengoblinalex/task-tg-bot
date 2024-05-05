@@ -9,6 +9,9 @@ router = Router()
 
 @router.message(Command('add'))
 async def cmd_add_task(message: Message):
+    """
+    Handling the /add command, then creates a task with the text after /add.
+    """
     text = message.text.replace('/add', '').strip()
 
     if text == '':
@@ -21,6 +24,9 @@ async def cmd_add_task(message: Message):
 
 @router.message(Command('tsk'))
 async def cmd_get_tasks(message: Message):
+    """
+    Sends a list of tasks from the database to the user.
+    """
     tasks = await get_tasks()
 
     if not tasks:
